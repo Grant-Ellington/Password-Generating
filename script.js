@@ -15,12 +15,12 @@ function generatePassword(){
 
   if(isCapitol && isSpecial){
     var charSet = char.lowerCase.concat(char.upperCase, char.numbers, char.special)
-  }
-  if(isCapitol){
+  }else if(isCapitol && !isSpecial){
     var charSet = char.lowerCase.concat(char.upperCase,char.numbers) 
-  }
-  if(isSpecial){
+  }else if(isSpecial&&!isCapitol){
     var charSet = char.lowerCase.concat(char.special, char.numbers)
+  }else{
+    var charSet = char.lowerCase.concat(char.numbers)
   }
   // if (!isCapitol && !isSpecial){
     // var charSet = char.lowerCase.concat(char.numbers)
@@ -31,7 +31,7 @@ console.log(charSet)
   password.push(charSet[random])
   console.log(password.join(''))
   }
-
+  return password.join('')
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
