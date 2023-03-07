@@ -13,7 +13,7 @@ function generatePassword(){
   var isSpecial = confirm('Do you want special characters?')
   password = []
 
-  if(isCapitol&&isSpecial){
+  if(isCapitol && isSpecial){
     var charSet = char.lowerCase.concat(char.upperCase, char.numbers, char.special)
   }
   if(isCapitol){
