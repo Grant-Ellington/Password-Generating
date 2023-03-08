@@ -13,26 +13,29 @@ function generatePassword(){
   var pwlength = prompt('How many characters is your password?');//sets the password length & the duration of the for loop
   var isCapitol = confirm('Do you want capitol letters?');//check to see if you want capitol letters
   var isSpecial = confirm('Do you want special characters?');//checks to see if you want special characters
-  var isNumber = confirm('Do you want numbers?');
-  var isLowerCase = confirm('Do you want lower case letters?');
+  var isNumber = confirm('Do you want numbers?');//checks to see if you want numbers
+  var isLowerCase = confirm('Do you want lower case letters?');//checks to see if you want lower case letters.
   password = []//empty password array
-  var charSet = [];
+  var charSet = [];//empty character set to to create character set to be used. 
 
+  //checks truthyness to pick which characters today
   if(isCapitol){charSet =charSet.concat(char.upperCase)}
   if(isLowerCase){charSet = charSet.concat(char.lowerCase)}
   if(isNumber){charSet = charSet.concat(char.numbers)}
   if(isSpecial){charSet = charSet.concat(char.special)}
   if(!isCapitol&&!isLowerCase&&!isNumber&&!isSpecial){
-    alert('You have not picked any valid characters')
+    alert('Please pick a valid character set')
     generatePassword();
   }
 console.log(charSet)
+
+//loop through to create password by picking the index of charset array.
   for( let i=0; i< pwlength; i++){
-  var random = Math.floor(Math.random()*charSet.length)
-  password.push(charSet[random])
+  var random = Math.floor(Math.random()*charSet.length)//picks random number 
+  password.push(charSet[random])//adds character to chaSet
   console.log(password.join(''))
   }
-  return password.join('')
+  return password.join('')//.join makes the array a string.
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
