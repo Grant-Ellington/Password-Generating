@@ -1,30 +1,31 @@
 // Assignment code here
+
+// character set are placed in an object.
 char = {
   lowerCase: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
   upperCase: ['A','B','C','D','E','F','G','H','I','J','K','L','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
   numbers: [1,2,3,4,5,6,7,8,9,0],
-  special: ['!','@','#','$']
+  special: ['!','@','#','$','%','^','&','*','(',')',"-",'+',',',".",'/','?','<','>']
 }
 
 function generatePassword(){
 
-  var pwlength = prompt('How many characters is your password?')
-  var isCapitol = confirm('Do you want capitol letters?')
-  var isSpecial = confirm('Do you want special characters?')
-  password = []
+  var pwlength = prompt('How many characters is your password?');//sets the password length & the duration of the for loop
+  var isCapitol = confirm('Do you want capitol letters?');//check to see if you want capitol letters
+  var isSpecial = confirm('Do you want special characters?');//checks to see if you want special characters
+  var isNumber = confirm('Do you want numbers?');
+  var isLowerCase = confirm('Do you want lower case letters?');
+  password = []//empty password array
+  var charSet = [];
 
-  if(isCapitol && isSpecial){
-    var charSet = char.lowerCase.concat(char.upperCase, char.numbers, char.special)
-  }else if(isCapitol && !isSpecial){
-    var charSet = char.lowerCase.concat(char.upperCase,char.numbers) 
-  }else if(isSpecial&&!isCapitol){
-    var charSet = char.lowerCase.concat(char.special, char.numbers)
-  }else{
-    var charSet = char.lowerCase.concat(char.numbers)
+  if(isCapitol){charSet =charSet.concat(char.upperCase)}
+  if(isLowerCase){charSet = charSet.concat(char.lowerCase)}
+  if(isNumber){charSet = charSet.concat(char.numbers)}
+  if(isSpecial){charSet = charSet.concat(char.special)}
+  if(!isCapitol&&!isLowerCase&&!isNumber&&!isSpecial){
+    alert('You have not picked any valid characters')
+    generatePassword();
   }
-  // if (!isCapitol && !isSpecial){
-    // var charSet = char.lowerCase.concat(char.numbers)
-  // }
 console.log(charSet)
   for( let i=0; i< pwlength; i++){
   var random = Math.floor(Math.random()*charSet.length)
